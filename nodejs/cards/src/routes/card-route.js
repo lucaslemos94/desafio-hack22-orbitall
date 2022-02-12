@@ -13,5 +13,8 @@ module.exports = (app) =>{
     .put(api.updateById)
     .delete(api.deleteById)
     .get(api.findById)
+
+    app.route('/cards/paginationAndSorting')
+    .get(api.paginationAndSorting)
     
 }

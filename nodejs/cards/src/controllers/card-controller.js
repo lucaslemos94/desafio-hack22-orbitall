@@ -74,4 +74,21 @@ api.findById = (request, response) => {
   });
 };
 
+
+api.paginationAndSorting = (request,response) =>{
+    const {name} = request.params;
+    // const {limit} = request.params;
+
+    neDB.find({}).sort({ customerName: 1 }).skip(1).limit(5).exec(function (err, docs) {
+    if (err) {
+      const msg = "Error upon find current cards!";
+      console.error(msg, err);
+
+      response.status(err.status | 400);
+      response.json({ mensagem: msg });
+    }
+     response.json(docs);
+  });
+}
+
 module.exports = api;
